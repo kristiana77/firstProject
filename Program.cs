@@ -3,8 +3,10 @@
     internal class Program
     {
         private const string FilePath = "people.txt";
+        
         static void Main(string[] args)
-        {
+        {   
+            Console.OutputEncoding=System.Text.Encoding.UTF8;
             List<Person> people = LoadPeopleFromFile();
             bool running = true;
 
@@ -48,6 +50,16 @@
                 people.Add(person);
             }
             return people;
+        }
+
+        static void SavePeopleToFile(List<Person> people)
+        {
+            List<string> rows = new List<string>();
+            foreach (Person p in people)
+            {
+                rows.Add(p.ToFileRow());
+            }
+            File.WriteAllLines(FilePath, rows);
         }
     }
 }
