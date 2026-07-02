@@ -40,10 +40,10 @@
                         break;
 
                     case "2":
-                        Console.WriteLine("--- ---");
+                        Console.WriteLine("---Списък с хора---");
                         if (people.Count == 0)
                         {
-                            Console.WriteLine("");
+                            Console.WriteLine("Списъкът е празен (няма записи във файла).");
                         }
                         else
                         {
@@ -54,6 +54,32 @@
                         }
                         Console.WriteLine();
                         break;
+                    case "3":
+                        Console.Write("Въведете името на човека за промяна на заплатата: ");
+                        string nameToUpdate=Console.ReadLine();
+
+                        Person personToUpdate = null;
+
+                        foreach(Person p in people)
+                        {
+                            if(p.Name.Equals(nameToUpdate, StringComparison.OrdinalIgnoreCase))
+                            {
+                                personToUpdate = p;break;
+                            }
+                        }
+                        if(personToUpdate != null)
+                        {
+                            Console.Write($"Цегашна заплата на {personToUpdate.Name}: {personToUpdate.Salary:F2}. Нова заплата: {}");
+                            double newSalary=double.Parse(Console.ReadLine());
+                            personToUpdate.Salary = newSalary;
+                            SavePeopleToFile(people);
+                            Console.WriteLine("Заплатата беше успешно обновена във файла!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Човек с такова име не беше намерен.");
+                        }
+                            break;
                 }
             }
         }
