@@ -32,12 +32,28 @@
                         Console.Write("Въведете заплата: ");
                         double salary=double.Parse(Console.ReadLine());
                         Person newPerson=new Person(name, age, salary);
+                        people.Add(newPerson);
 
                         SavePeopleToFile(people);
                         Console.WriteLine("Успешно добавен нов запис!");
                         Console.WriteLine("");
                         break;
-                
+
+                    case "2":
+                        Console.WriteLine("--- ---");
+                        if (people.Count == 0)
+                        {
+                            Console.WriteLine("");
+                        }
+                        else
+                        {
+                            foreach(Person p in people)
+                            {
+                                Console.WriteLine(p);
+                            }
+                        }
+                        Console.WriteLine();
+                        break;
                 }
             }
         }

@@ -28,7 +28,6 @@ namespace firstProject
 
         public string ToFileRow()
         {
-
             return $"{Name};{Age};{Salary}";
         }
 
