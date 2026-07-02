@@ -2,6 +2,7 @@
 {
     internal class Program
     {
+        private const string FilePath = "people.txt";
         static void Main(string[] args)
         {
             List<Person> people = LoadPeopleFromFile();
@@ -19,14 +20,34 @@
 
                 string choice=Console.ReadLine();
                 Console.WriteLine();
+                switch (choice) 
+                {
+                    case "1":
+                        break;
                 
-
-
+                }
             }
+        }
 
+        static List<Person> LoadPeopleFromFile()
+        {
+            List<Person> people= new List<Person>();
+            if (!File.Exists(FilePath))
+            {
+                return people;
+            }
+            string[] lines = File.ReadAllLines(FilePath);
+            foreach (string line in lines)
+            {
+                string[] parts = line.Split(';');
 
-
-
+                Person person = new Person(
+                    parts[0],
+                    int.Parse(parts[1]),
+                    double.Parse(parts[2]));
+                people.Add(person);
+            }
+            return people;
         }
     }
 }
