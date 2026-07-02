@@ -69,7 +69,7 @@
                         }
                         if(personToUpdate != null)
                         {
-                            Console.Write($"Цегашна заплата на {personToUpdate.Name}: {personToUpdate.Salary:F2}. Нова заплата: {}");
+                            Console.Write($"Cегашна заплата на {personToUpdate.Name}: {personToUpdate.Salary:F2}. Нова заплата: {}");
                             double newSalary=double.Parse(Console.ReadLine());
                             personToUpdate.Salary = newSalary;
                             SavePeopleToFile(people);
@@ -79,7 +79,10 @@
                         {
                             Console.WriteLine("Човек с такова име не беше намерен.");
                         }
-                            break;
+                        break;
+                    case "4":
+                        break;
+                   
                 }
             }
         }
